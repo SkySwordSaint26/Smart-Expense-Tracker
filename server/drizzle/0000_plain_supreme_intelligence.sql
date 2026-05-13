@@ -37,10 +37,19 @@ CREATE TABLE "Transactions" (
 	"is_deleted" boolean DEFAULT 'false',
 	"created_at" timestamp DEFAULT now(),
 	"updated_at" timestamp DEFAULT now(),
-	CONSTRAINT "type_check" CHECK ({table.type} IN ('income', 'expense'))
+	CONSTRAINT "type_check" CHECK ("Transactions"."type" IN ('income', 'expense'))
 );
 --> statement-breakpoint
-ALTER TABLE "Users" ALTER COLUMN "name" SET NOT NULL;--> statement-breakpoint
+CREATE TABLE "Users" (
+	"user_id" serial PRIMARY KEY NOT NULL,
+	"name" varchar(100) NOT NULL,
+	"password" varchar(255) NOT NULL,
+	"email" varchar(150) NOT NULL,
+	"roles" "roles" DEFAULT 'user',
+	"created_at" timestamp with time zone DEFAULT now(),
+	CONSTRAINT "Users_email_unique" UNIQUE("email")
+);
+--> statement-breakpoint
 ALTER TABLE "Budgets" ADD CONSTRAINT "Budgets_user_id_Users_user_id_fk" FOREIGN KEY ("user_id") REFERENCES "public"."Users"("user_id") ON DELETE cascade ON UPDATE no action;--> statement-breakpoint
 ALTER TABLE "Budgets" ADD CONSTRAINT "Budgets_category_id_Categories_category_id_fk" FOREIGN KEY ("category_id") REFERENCES "public"."Categories"("category_id") ON DELETE set null ON UPDATE no action;--> statement-breakpoint
 ALTER TABLE "Insights" ADD CONSTRAINT "Insights_user_id_Users_user_id_fk" FOREIGN KEY ("user_id") REFERENCES "public"."Users"("user_id") ON DELETE cascade ON UPDATE no action;--> statement-breakpoint

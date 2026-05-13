@@ -5,22 +5,15 @@
     {
       "idx": 0,
       "version": "7",
-      "when": 1778653966431,
-      "tag": "0000_noisy_smasher",
+      "when": 1778664400907,
+      "tag": "0000_plain_supreme_intelligence",
       "breakpoints": true
     },
     {
       "idx": 1,
       "version": "7",
-      "when": 1778657013028,
-      "tag": "0001_init",
-      "breakpoints": true
-    },
-    {
-      "idx": 2,
-      "version": "7",
-      "when": 1778657242860,
-      "tag": "0002_transaction",
+      "when": 1778664508810,
+      "tag": "0001_lumpy_spectrum",
       "breakpoints": true
     }
   ]

@@ -1,6 +1,6 @@
 {
-  "id": "09680e80-de18-4245-8cc2-15735c905fea",
-  "prevId": "ceac956f-14e5-46f5-867b-ef423a6640d9",
+  "id": "cd8bf562-65d2-4a32-b876-81b3b1a1f191",
+  "prevId": "dddd9610-920d-4d27-bfdf-990675a9ec5a",
   "version": "7",
   "dialect": "postgresql",
   "tables": {
@@ -308,7 +308,7 @@
       "checkConstraints": {
         "type_check": {
           "name": "type_check",
-          "value": "{table.type} IN ('income', 'expense')"
+          "value": "\"Transactions\".\"type\" IN ('income', 'expense')"
         }
       },
       "isRLSEnabled": false
@@ -341,9 +341,10 @@
           "primaryKey": false,
           "notNull": true
         },
-        "role": {
-          "name": "role",
-          "type": "varchar(10)",
+        "roles": {
+          "name": "roles",
+          "type": "roles",
+          "typeSchema": "public",
           "primaryKey": false,
           "notNull": false,
           "default": "'user'"
@@ -373,7 +374,16 @@
       "isRLSEnabled": false
     }
   },
-  "enums": {},
+  "enums": {
+    "public.roles": {
+      "name": "roles",
+      "schema": "public",
+      "values": [
+        "user",
+        "admin"
+      ]
+    }
+  },
   "schemas": {},
   "sequences": {},
   "roles": {},

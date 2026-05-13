@@ -2,14 +2,16 @@ import { sql } from "drizzle-orm"
 import { decimal } from "drizzle-orm/pg-core"
 import { text } from "drizzle-orm/pg-core"
 import { integer } from "drizzle-orm/pg-core"
-import { pgTable, serial, varchar, timestamp , check, date, boolean} from "drizzle-orm/pg-core"
+import { pgTable,pgEnum, serial, varchar, timestamp , check, date, boolean} from "drizzle-orm/pg-core"
+
+export const Role = pgEnum("roles", ["user", "admin"])
 
 export const Users = pgTable('Users', {
     userId: serial("user_id").primaryKey(),
     name: varchar("name", {length: 100}).notNull(),
     password: varchar("password", {length:255}).notNull(),
     email: varchar("email", {length: 150}).unique().notNull(),
-    role: varchar("role", {length: 10}).default("user"),
+    role: Role("roles").default("user"),
     createdAt: timestamp("created_at", {withTimezone: true}).defaultNow(),
 })
 
