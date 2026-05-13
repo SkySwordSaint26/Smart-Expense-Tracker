@@ -6,7 +6,7 @@ import {
   Transactions,
   Budgets,
   Insights,
-} from "./schema";
+} from "./schema.js";
 
 // User Realtions
 export const userRelations = relations(Users, ({many})=>({

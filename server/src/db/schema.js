@@ -35,7 +35,7 @@ export const Transactions = pgTable("Transactions", {
     isAutoCategorized: boolean("is_auto_categorized").default(false),    
     note: text("note"),
 
-    isDeleted: boolean("is_deleted").default("false"),
+    isDeleted: boolean("is_deleted").default(false),
     createdAt: timestamp("created_at").defaultNow(),
     updatedAt: timestamp("updated_at").defaultNow(),
 

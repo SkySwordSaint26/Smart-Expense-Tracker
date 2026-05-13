@@ -15,6 +15,13 @@
       "when": 1778664508810,
       "tag": "0001_lumpy_spectrum",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1778673782428,
+      "tag": "0002_productive_scarecrow",
+      "breakpoints": true
     }
   ]
 }
