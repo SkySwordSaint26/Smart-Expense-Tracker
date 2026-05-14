@@ -1,4 +1,4 @@
-import { db } from "../src/db/index.js"
+import { db } from "../src/config/db.js"
 import { Users, Categories} from "../src/db/schema.js"
 
 const users = [
