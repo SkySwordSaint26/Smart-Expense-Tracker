@@ -15,9 +15,9 @@ export const registerUser = asyncHandler(async (req, res) => {
             .from(Users)
             .where(eq(Users.email, email));
 
-        if(existingUser){
+        if(existingUser.length > 0){
             return res.status(409).json({
-                message: "User already exist",
+                message: "User already exists",
             })
         }
 
@@ -25,7 +25,12 @@ export const registerUser = asyncHandler(async (req, res) => {
             name,
             email,
             password: hashedPassword,
-        }).returning();
+        }).returning({
+            userId: Users.userId,
+            name: Users.name,
+            email: Users.email,
+            role: Users.role,
+        });
 
         res.status(201).json({
             message: "User registered"
@@ -46,7 +51,7 @@ export const loginUser = asyncHandler(async(req, res)=>{
         const isMatch = await bcrypt.compare(password, user[0].password);
         if(!isMatch) {
             return res.status(401).json({
-                message: "Ivalid Credentials",
+                message: "Invalid credentials",
             });
         }
 
@@ -62,7 +67,7 @@ export const loginUser = asyncHandler(async(req, res)=>{
         );
 
         res.json({
-            message: "Login successfull",
+            message: "Login successful",
             token,
         });
 })

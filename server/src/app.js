@@ -10,8 +10,6 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-app.use(errorHandler);
-
 // Use routes in routes/index.js
 app.use("/api", routes);
 
@@ -34,6 +32,8 @@ app.get("/users", async (req,res)=>{
     const users = await db.select().from(Users);
     res.json(users)
 });
+
+app.use(errorHandler);
 
 
 
