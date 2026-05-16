@@ -33,7 +33,7 @@ export const getTransaction = asyncHandler(async (req, res)=>{
     const allTransactions = await db.select().from(Transactions)
         .where(
             and(
-                eq(Transactions.transactionId, transactionId),
+                
                 eq(Transactions.userId, userId),
                 eq(Transactions.isDeleted, false)
             )
